@@ -1,0 +1,26 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="https://zero1.sg/img/accountlogin-icon.png" id="icon" alt="User Icon" style="width: 120px;" />
+      </div>
+  
+      <!-- Login Form -->
+      <form #loginFrom="ngForm" (ngSubmit)="onSubmit()">
+        <input type="text" class="fadeIn second" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" placeholder="User" required pattern="[a-zA-Z]+">
+        <br/>
+        <small *ngIf="!UserName.valid && UserName.touched">
+            User is required!
+        </small>
+        <input type="password" class="fadeIn third" name="Password" #Password="ngModel" [(ngModel)]="user.Password" placeholder="Password" required>
+        <br/>
+        <small *ngIf="!Password.valid && Password.touched">
+            Password is required!
+        </small>
+        <br/>
+        <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="loginFrom.invalid">
+      </form>  
+    </div>
+  </div>

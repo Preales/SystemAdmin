@@ -1,0 +1,67 @@
+<div class="">
+    <form #employeeForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <label class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="id" #id="ngModel" [(ngModel)]="Employee.id"
+                    placeholder="ID" readonly>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="Employee.name"
+                    placeholder="Employee Name" required>
+                <small *ngIf="!name.valid && name.touched">
+                    Field is required!
+                </small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <label class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="lastName" #lastName="ngModel"
+                    [(ngModel)]="Employee.lastName" placeholder="Employee Last Name" required>
+                <small *ngIf="!lastName.valid && lastName.touched">
+                    Field is required!
+                </small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <label class="col-sm-2 col-form-label">Identification </label>
+            <div class="col-sm-6">
+                <div *ngIf="!isEdit">
+                    <input type="text" class="form-control" name="identification" #identification="ngModel"
+                        [(ngModel)]="Employee.identification" placeholder="Identification Number : 104365421 " required
+                        pattern="[0-9]+">
+                    <small *ngIf="!identification.valid && identification.touched">
+                        Field is required!
+                    </small>
+                </div>
+                <div *ngIf="isEdit">
+                    <input type="text" class="form-control" name="identification" #identification="ngModel"
+                        [(ngModel)]="Employee.identification" placeholder="Identification Number " pattern="[0-9]+"
+                        readonly>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <label class="col-sm-2 col-form-label">Charge</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="charge" #charge="ngModel" [(ngModel)]="Employee.charge"
+                    placeholder="Employee Charge" required>
+                <small *ngIf="!charge.valid && charge.touched">
+                    Field is required!
+                </small>
+            </div>
+        </div>
+        <br />
+        <input type="submit" class="btn btn-primary" value="Save" [disabled]="employeeForm.invalid">
+        <button class="btn btn-danger" style="margin: 2px;" [routerLink]="['/employee']">Back</button>
+    </form>
+</div>
